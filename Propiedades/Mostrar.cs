@@ -183,10 +183,40 @@ namespace Propiedades
         {
             cargar();
             verificar_propiedades();
-            Total temppropietario = total.OrderByDescending(al => al.Cantidad_propiedades).First();
+            final temppropietario = total.OrderByDescending(al => al.Cantidadpropiedades).First();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = propietarios;
             dataGridView1.Refresh();
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            string temp_cuota = "";
+            propiedades = propiedades.OrderByDescending(cuota => cuota.Cuotamantenimiento).ToList();
+            for (int i = 0; i < 3; i++)
+                temp_cuota = temp_cuota + "Q." + propiedades[i].Cuotamantenimiento + "\n";
+
+
+            label1.Text = (temp_cuota);
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            string temp_cuota = "";
+            propiedades = propiedades.OrderBy(cuota => cuota.Cuotamantenimiento).ToList();
+            for (int x = 0; x < 3; x++)
+                temp_cuota = temp_cuota + "Q." + propiedades[x].Cuotamantenimiento + "\n";
+
+
+            label1.Text = temp_cuota;
+        }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            total = total.OrderByDescending(cuota => cuota.Cuotafinal).ToList();
+            // Se muestra en una label los datos del indice 0 de esta
+            label1.Text = total[0].Nombre_apellido1 + " " + "Q." + (total[0].Cuotafinal);
+
         }
     }
 }
