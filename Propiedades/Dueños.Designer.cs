@@ -130,6 +130,7 @@ namespace Propiedades
             this.Controls.Add(this.button1);
             this.Name = "Dueños";
             this.Text = "Dueños";
+            this.Load += new System.EventHandler(this.Dueños_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -26,14 +26,14 @@ namespace Propiedades
 
         private void button2_Click(object sender, EventArgs e)
         {
-            propiedades vclientes = new propiedades();
+            datos vclientes = new datos();
             vclientes.Show();
             this.SetVisibleCore(false);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            datos vclientes = new datos();
+            Mostrar vclientes = new Mostrar();
             vclientes.Show();
             this.SetVisibleCore(false);
 
