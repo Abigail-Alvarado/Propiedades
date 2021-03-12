@@ -43,9 +43,9 @@ namespace Propiedades
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(540, 130);
+            this.button3.Location = new System.Drawing.Point(540, 143);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(193, 45);
+            this.button3.Size = new System.Drawing.Size(193, 32);
             this.button3.TabIndex = 24;
             this.button3.Text = "Desbloquear casillas";
             this.button3.UseVisualStyleBackColor = true;
