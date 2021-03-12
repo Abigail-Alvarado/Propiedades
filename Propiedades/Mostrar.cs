@@ -154,10 +154,39 @@ namespace Propiedades
             leer_datos();
             mostrar();
         }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        void ordenar(int e)
         {
 
+            if (e == 1)
+            {
+                mostrargrid = mostrargrid.OrderBy(cuota => cuota.Cuotamantenimiento).ToList();
+
+            }
+            if (e == 2)
+            {
+                mostrargrid = mostrargrid.OrderByDescending(cuota => cuota.Cuotamantenimiento).ToList();
+
+            }
+            mostrar();
+        }
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            ordenar(1);//ascendente
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            ordenar(2);//descendente
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            cargar();
+            verificar_propiedades();
+            Total temppropietario = total.OrderByDescending(al => al.Cantidad_propiedades).First();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = propietarios;
+            dataGridView1.Refresh();
         }
     }
 }
