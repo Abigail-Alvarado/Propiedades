@@ -101,6 +101,43 @@ namespace Propiedades
             dataGridView1.DataSource = mostrargrid;
             dataGridView1.Refresh();
         }
+        void cargar()
+        {
+            foreach (var p in propiedades)
+            {
+                final propietario_medio = new final();
+                prop temppropietario = propietarios.Find(l => l.Dpi == p.Dpi);
+                propietario_medio.Dpi = p.Dpi;
+                propietario_medio.Nombre_apellido1 = temppropietario.Nombre + " " + temppropietario.Apellido;
+
+                total.Add(propietario_medio);
+            }
+        }
+        void verificar_propiedades() // retorna 0 si no se encuentra en la lista
+        {
+            for (int x = 0; x < propiedades.Count; x++)
+            {
+
+                for (int y = 0; y < total.Count; y++)
+                {
+                    if (propiedades[x].Dpi.Equals(total[y].Dpi))
+                    {
+                        //Propietario_mayor temppropietario_mayor = new Propietario_mayor();
+                        total[y].Cantidadpropiedades = total[y].Cantidadpropiedades + 1;
+                    }
+                    else
+                    {
+                        final al = total.Find(c => c.Dpi.Equals(propiedades[x].Dpi));
+                        final propietario_Mayortemp = new final();
+                        propietario_Mayortemp.Nombre_apellido1 = al.Nombre_apellido1;
+                        propietario_Mayortemp.Dpi = al.Dpi;
+                        propietario_Mayortemp.Cantidadpropiedades = al.Cantidadpropiedades;
+                        propietario_Mayortemp.Cuotafinal = al.Cuotafinal;
+                    }
+                }
+            }
+
+        }
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -114,7 +151,7 @@ namespace Propiedades
 
         private void Mostrar_Load(object sender, EventArgs e)
         {
-     
+            leer_datos();
             mostrar();
         }
 
