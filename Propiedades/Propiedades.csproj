@@ -58,6 +58,7 @@
     <Compile Include="Dueños.Designer.cs">
       <DependentUpon>Dueños.cs</DependentUpon>
     </Compile>
+    <Compile Include="final.cs" />
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>

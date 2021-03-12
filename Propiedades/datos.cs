@@ -27,73 +27,32 @@ namespace Propiedades
         }
         void guardar()
         {
-            FileStream stream = new FileStream(archivo2, FileMode.OpenOrCreate, FileAccess.Write);
+            FileStream stream = new FileStream(archivoC, FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
 
-            for (int i = 0; i < propiedades.Count; i++)
+            for (int i = 0; i < propietarios.Count; i++)
             {
-                writer.WriteLine(propiedades[i].Numerocasa);
-                writer.WriteLine(propiedades[i].Dpi);
-                writer.WriteLine(propiedades[i].Cuotamantenimiento);
+                writer.WriteLine(propietarios[i].Dpi);
+                writer.WriteLine(propietarios[i].Nombre);
+                writer.WriteLine(propietarios[i].Apellido);
             }
             writer.Close();
-
-            FileStream stream2 = new FileStream(archivo3, FileMode.OpenOrCreate, FileAccess.Write);
-            StreamWriter writer2 = new StreamWriter(stream2);
-
-            for (int i = 0; i < mostrargrid.Count; i++)
-            {
-                writer2.WriteLine(mostrargrid[i].Nombre_apellido);
-                writer2.WriteLine(mostrargrid[i].Numerocasa);
-                writer2.WriteLine(mostrargrid[i].Cuotamantenimiento);
-            }
-            writer2.Close();
         }
         void leer_datos()
         {
-            FileStream stream = new FileStream(archivo2, FileMode.Open, FileAccess.Read);
+            FileStream stream = new FileStream(archivoC, FileMode.Open, FileAccess.Read);
             StreamReader reader = new StreamReader(stream);
             while (reader.Peek() > -1)
             {
-                ppropiedades temppropiedades = new ppropiedades();
-                temppropiedades.Numerocasa = reader.ReadLine();
-                temppropiedades.Dpi = reader.ReadLine();
-                temppropiedades.Cuotamantenimiento = float.Parse(reader.ReadLine());
-                propiedades.Add(temppropiedades);
-
-            }
-            //Cerrar el archivo, esta linea es importante porque sino despues de correr varias veces el programa daría error de que el archivo quedó abierto muchas veces. Entonces es necesario cerrarlo despues de terminar de leerlo.
-            reader.Close();
-
-
-            FileStream stream2 = new FileStream(archivoC, FileMode.Open, FileAccess.Read);
-            StreamReader reader2 = new StreamReader(stream2);
-            while (reader2.Peek() > -1)
-            {
                 prop temppropietarios = new prop();
-                temppropietarios.Dpi = reader2.ReadLine();
-                temppropietarios.Nombre = reader2.ReadLine();
-                temppropietarios.Apellido = reader2.ReadLine();
+                temppropietarios.Dpi = reader.ReadLine();
+                temppropietarios.Nombre = reader.ReadLine();
+                temppropietarios.Apellido = reader.ReadLine();
                 propietarios.Add(temppropietarios);
 
             }
             //Cerrar el archivo, esta linea es importante porque sino despues de correr varias veces el programa daría error de que el archivo quedó abierto muchas veces. Entonces es necesario cerrarlo despues de terminar de leerlo.
-            reader2.Close();
-
-            FileStream stream3 = new FileStream(archivo3, FileMode.Open, FileAccess.Read);
-            StreamReader reader3 = new StreamReader(stream3);
-            while (reader3.Peek() > -1)
-            {
-                Total tempmostrar = new Total();
-                tempmostrar.Nombre_apellido = reader3.ReadLine();
-                tempmostrar.Numerocasa = reader3.ReadLine();
-                tempmostrar.Cuotamantenimiento = float.Parse(reader3.ReadLine());
-
-                mostrargrid.Add(tempmostrar);
-
-            }
-            //Cerrar el archivo, esta linea es importante porque sino despues de correr varias veces el programa daría error de que el archivo quedó abierto muchas veces. Entonces es necesario cerrarlo despues de terminar de leerlo.
-            reader3.Close();
+            reader.Close();
         }
         void limpiar()
         {
